@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/labstack/echo"
 	"net/http"
@@ -8,13 +9,18 @@ import (
 )
 
 func main() {
-	fmt.Println("vim-go")
+	fmt.Println("Drivers!! START YOUR ENGINE!!!")
 
 	e := echo.New()
 
 	e.POST("/check", func(c echo.Context) error {
 		params, _ := c.FormParams()
-		fmt.Println(string(params.Get("payload")))
+		var payload interface{}
+		json.Unmarshal([]byte(params.Get("payload")), &payload)
+		action := payload.(map[string]interface{})["action"]
+		if action != nil && action.(string) == "synchronize" {
+			fmt.Println(params.Get("payload"))
+		}
 		return c.String(http.StatusOK, "OK")
 	})
 
