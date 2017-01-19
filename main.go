@@ -17,10 +17,12 @@ func main() {
 		params, _ := c.FormParams()
 		var payload interface{}
 		json.Unmarshal([]byte(params.Get("payload")), &payload)
+
 		action := payload.(map[string]interface{})["action"]
 		if action != nil && action.(string) == "synchronize" {
 			fmt.Println(params.Get("payload"))
 		}
+
 		return c.String(http.StatusOK, "OK")
 	})
 
