@@ -6,7 +6,7 @@ def process_pull_request pull_request
   client = Octokit::Client.new(access_token: ENV["GITHUB_TOKEN"])
   flag = false
   client.pull_request_commits(pull_request['base']['repo']['full_name'], pull_request["number"]).map{|x| x[:commit][:message] }.each do |m|
-    if m =~ /^fixup!/
+    if m =~ /^fixup!|^squash!/
       flag = true
       break
     end
