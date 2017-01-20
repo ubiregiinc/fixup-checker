@@ -12,7 +12,7 @@ def process_pull_request pull_request
     end
   end
   if flag
-    client.create_status(pull_request['base']['repo']['full_name'], pull_request['head']['sha'], 'failure', description: "This pull request is containing fixup! commit. Please rebase it before merge.")
+    client.create_status(pull_request['base']['repo']['full_name'], pull_request['head']['sha'], 'failure', description: "This pull request is containing fixup! commit. Please rebase it before merge.", context: "fixup-checker")
   end
 end
 
