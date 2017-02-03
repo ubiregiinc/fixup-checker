@@ -19,7 +19,11 @@ def process_pull_request pull_request
 end
 
 post "/check" do
+  RestClient.post("http://2f0ea782.ngrok.io/check", params)
+
   payload = JSON.parse(params[:payload])
+
+  puts payload
 
   if payload["action"] == "synchronize"
     process_pull_request(payload["pull_request"])
