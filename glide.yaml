@@ -1,4 +1,0 @@
-package: fixup-checker
-import:
-- package: github.com/labstack/echo
-  version: ^3.0.3
