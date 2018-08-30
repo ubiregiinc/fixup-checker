@@ -21,7 +21,8 @@ end
 post "/check" do
   payload = JSON.parse(params[:payload])
 
-  puts payload
+  p payload.keys
+  p payload
 
   if payload["action"] == "synchronize"
     process_pull_request(payload["pull_request"])
