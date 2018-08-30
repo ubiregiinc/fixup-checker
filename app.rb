@@ -24,7 +24,7 @@ post "/check" do
   p payload.keys
   p payload
 
-  if payload["action"] == "synchronize"
+  if payload["action"] == "synchronize" or (payload["pull_request"] and payload["pull_request"]["number"])
     process_pull_request(payload["pull_request"])
   end
   "OK"
