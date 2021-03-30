@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 source "https://rubygems.org"
-ruby '2.5.1'
+ruby '3.0.0'
 gem "sinatra"
 gem "octokit"
 gem 'rest-client'
