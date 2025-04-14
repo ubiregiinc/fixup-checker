@@ -18,6 +18,10 @@ def process_pull_request pull_request
   end
 end
 
+get "/health" do
+  "OK"
+end
+
 post "/check" do
   payload = JSON.parse(params[:payload])
 
